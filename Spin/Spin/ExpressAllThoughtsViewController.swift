@@ -32,17 +32,40 @@ class ExpressAllThoughtsViewController: UIViewController {
         return button
     }()
     
+    /// Custom Title on Navigation Item
+    private let navigationItemTitleLabel: UILabel = {
+        let label = UILabel(frame: .zero)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = Constants.navigationItemTitle
+        return label
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .blue
-        // Do any additional setup after loading the view.
+        
+        setupViews()
+        setupConstraints()
     }
 }
 
-// MARK: CONSTANTS
+// MARK: PRIVATE
 private extension ExpressAllThoughtsViewController {
     enum Constants {
         static let submitButtonTitle = "Complete"
         static let tappedSubmitButtonTitle = "Great Job!"
+        static let navigationItemTitle = "Express All Your Thoughts"
+    }
+    
+    func setupViews() {
+        // Add Subviews
+        view.addSubview(textView)
+        view.addSubview(submitButton)
+        
+        // Navigation Item Customization
+        navigationItem.titleView = navigationItemTitleLabel
+    }
+    
+    func setupConstraints() {
+        
     }
 }
